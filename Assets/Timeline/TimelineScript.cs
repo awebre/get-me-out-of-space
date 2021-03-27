@@ -6,9 +6,9 @@ public class TimelineScript : MonoBehaviour
 {
     public float timeLimit;
     public float currentTime;
-    public Vector2 endPosition;
+    public Vector3 endPosition;
     public GameObject playerIcon;
-    private Vector2 startPosition;
+    private Vector3 startPosition;
 
     private void Start()
     {
@@ -18,6 +18,6 @@ public class TimelineScript : MonoBehaviour
     void Update()
     {
         currentTime += Time.deltaTime;
-        playerIcon.transform.position = Vector2.Lerp(startPosition, endPosition, currentTime/timeLimit);
+        playerIcon.transform.position = Vector2.Lerp(startPosition, endPosition, currentTime / timeLimit);
     }
 }
