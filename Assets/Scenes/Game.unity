@@ -806,7 +806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jumpSpeed: 6
+  jumpSpeed: 8
   groundCheckDistance: 20
   jetpackMeterMax: 120
   jetpackCost: 30

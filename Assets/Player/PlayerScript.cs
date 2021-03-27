@@ -52,9 +52,4 @@ public class PlayerScript : MonoBehaviour
         bar.color = jetpackMeter >= jetpackCost ? Color.yellow : Color.red;
         bar.fillAmount = jetpackMeter / jetpackMeterMax;
     }
-
-    void Squish()
-    {
-
-    }
 }
