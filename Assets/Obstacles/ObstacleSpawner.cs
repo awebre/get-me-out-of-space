@@ -60,17 +60,16 @@ public class ObstacleSpawner : MonoBehaviour
 
     public float GetYFromRange(Region region)
     {
-        return Random.Range(-3.5f, 4f);
-        //switch (region)
-        //{
-        //    case Region.Top:
-        //        return Random.Range(1.5f, 4f);
-        //    case Region.Middle:
-        //        return Random.Range(-0.5f, 1.5f);
-        //    case Region.Bottom:
-        //    default:
-        //        return Random.Range(-3.5f, -0.5f);
-        //}
+        switch (region)
+        {
+            case Region.Top:
+                return Random.Range(1.5f, 4f);
+            case Region.Middle:
+                return Random.Range(-0.5f, 1.5f);
+            case Region.Bottom:
+            default:
+                return Random.Range(-3.5f, -0.5f);
+        }
     }
 }
 
