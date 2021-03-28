@@ -11,6 +11,8 @@ public class PlayerScript : MonoBehaviour
     public float jetpackMeterMax;
     public float jetpackCost;
     public float jetpackRefillSpeed;
+    public int lives;
+    public float invincibilityTimer;
     public GameObject jetpackBar;
     private float jetpackMeter;
     private Rigidbody2D _rb;
@@ -25,6 +27,14 @@ public class PlayerScript : MonoBehaviour
     {
         Movement();
         Jump();
+        if(invincibilityTimer > 0)
+        {
+            invincibilityTimer = invincibilityTimer - Time.deltaTime;
+        }
+        else if(invincibilityTimer < 0) 
+        {
+            invincibilityTimer = 0;
+        }
     }
 
     void Movement()
@@ -56,5 +66,14 @@ public class PlayerScript : MonoBehaviour
     void Squish()
     {
 
+    }
+    
+    void OnTriggerEnter()
+    {
+        if(invincibilityTimer > 0)
+        {
+            lives--;
+            invincibilityTimer = 15f;
+        }
     }
 }

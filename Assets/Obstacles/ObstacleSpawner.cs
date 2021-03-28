@@ -31,7 +31,7 @@ public class ObstacleSpawner : MonoBehaviour
         if (_timer - _lastRender > Random.Range(2f, 4f))
         {
             var tmpObj = GameObject.Instantiate(asteroidSprite, currentPosition, Quaternion.identity) as GameObject;
-            tmpObj.transform.position = new Vector3(10f, GetYFromRange(GetRandomRegion()), 0);
+            tmpObj.transform.position = new Vector3(15f, GetYFromRange(GetRandomRegion()), 0);
             _visibleObjects.Add(new TimedGameObject(tmpObj, _timer));
             _lastRender = _timer;
         }
