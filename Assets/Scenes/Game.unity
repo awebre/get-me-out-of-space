@@ -1035,7 +1035,7 @@ MonoBehaviour:
   jumpSpeed: 8
   groundCheckDistance: 20
   jetpackMeterMax: 120
-  jetpackCost: 20
+  jetpackCost: 30
   jetpackRefillSpeed: 0.07
   lives: 3
   invincibilityTimer: 0

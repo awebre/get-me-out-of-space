@@ -66,7 +66,7 @@ public class PlayerScript : MonoBehaviour
 
         if(jetpackMeter < jetpackMeterMax)
         {
-            jetpackMeter += jetpackRefillSpeed;
+            jetpackMeter += jetpackRefillSpeed * 200 * Time.deltaTime;
         }
 
         bar.color = jetpackMeter >= jetpackCost ? Color.yellow : Color.red;
