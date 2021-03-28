@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -61,19 +59,5 @@ public class PlayerScript : MonoBehaviour
 
         bar.color = jetpackMeter >= jetpackCost ? Color.yellow : Color.red;
         bar.fillAmount = jetpackMeter / jetpackMeterMax;
-    }
-
-    void Squish()
-    {
-
-    }
-    
-    void OnTriggerEnter()
-    {
-        if(invincibilityTimer > 0)
-        {
-            lives--;
-            invincibilityTimer = 15f;
-        }
     }
 }

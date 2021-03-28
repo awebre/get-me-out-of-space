@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TimelineScript : MonoBehaviour
 {
@@ -19,5 +20,10 @@ public class TimelineScript : MonoBehaviour
     {
         currentTime += Time.deltaTime;
         playerIcon.transform.position = Vector2.Lerp(startPosition, endPosition, currentTime / timeLimit);
+
+        if(currentTime > timeLimit)
+        {
+            SceneManager.LoadScene(sceneName: "Finish");
+        }
     }
 }
