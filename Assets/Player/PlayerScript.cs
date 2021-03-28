@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
@@ -14,10 +15,13 @@ public class PlayerScript : MonoBehaviour
     public GameObject jetpackBar;
     private float jetpackMeter;
     private Rigidbody2D _rb;
+    public GameObject animation;
+    private SpriteRenderer _spriteRenderer;
 
     void Start()
     {
         _rb = gameObject.GetComponent<Rigidbody2D>();
+        _spriteRenderer = animation.GetComponent<SpriteRenderer>();
         jetpackMeter = jetpackMeterMax;
     }
 
@@ -25,13 +29,21 @@ public class PlayerScript : MonoBehaviour
     {
         Movement();
         Jump();
-        if(invincibilityTimer > 0)
+        Death();
+        if (invincibilityTimer > 0)
         {
-            invincibilityTimer = invincibilityTimer - Time.deltaTime;
+            var colur = Color.white;
+            colur.a = 0.7f;
+
+            invincibilityTimer -= Time.deltaTime;
+            _spriteRenderer.color = colur;
         }
-        else if(invincibilityTimer < 0) 
+        else if(invincibilityTimer <= 0) 
         {
+            var coleer = Color.white;
+            coleer.a = 1;
             invincibilityTimer = 0;
+            _spriteRenderer.color = coleer;
         }
     }
 
@@ -59,5 +71,13 @@ public class PlayerScript : MonoBehaviour
 
         bar.color = jetpackMeter >= jetpackCost ? Color.yellow : Color.red;
         bar.fillAmount = jetpackMeter / jetpackMeterMax;
+    }
+
+    void Death()
+    {
+        if(lives == 0)
+        {
+            SceneManager.LoadScene(sceneName: "Game");
+        }
     }
 }

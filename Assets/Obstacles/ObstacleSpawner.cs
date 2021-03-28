@@ -11,6 +11,8 @@ public class ObstacleSpawner : MonoBehaviour
     public List<GameObject> objects;
 
     private List<TimedGameObject> _visibleObjects = new List<TimedGameObject>();
+    public float lowRange;
+    public float highRange;
     private float _timer;
     private float _lastRender;
 
@@ -28,7 +30,7 @@ public class ObstacleSpawner : MonoBehaviour
         var index = Random.Range(0, objects.Count());
         var asteroidSprite = objects[index];
         var currentPosition = asteroidSprite.transform.position;
-        if (_timer - _lastRender > Random.Range(2f, 4f))
+        if (_timer - _lastRender > Random.Range(lowRange, highRange))
         {
             var tmpObj = GameObject.Instantiate(asteroidSprite, currentPosition, Quaternion.identity) as GameObject;
             tmpObj.transform.position = new Vector3(15f, GetYFromRange(GetRandomRegion()), 0);
@@ -49,25 +51,26 @@ public class ObstacleSpawner : MonoBehaviour
         var range = Random.Range(0f, 1f);
         return range switch
         {
-            var r when r < 0.75f => Region.Bottom,
-            var r when 0.75 <= r && r <= 0.90f => Region.Middle,
-            var r when 0.90f < r => Region.Top,
+            var r when r < 0.5f => Region.Bottom,
+            var r when 0.5 <= r && r <= 0.75f => Region.Middle,
+            var r when 0.75f < r => Region.Top,
             _ => Region.Bottom
         };
     }
 
     public float GetYFromRange(Region region)
     {
-        switch (region)
-        {
-            case Region.Top:
-                return Random.Range(1.5f, 4f);
-            case Region.Middle:
-                return Random.Range(-0.5f, 1.5f);
-            case Region.Bottom:
-            default:
-                return Random.Range(-3.5f, -0.5f);
-        }
+        return Random.Range(-3.5f, 4f);
+        //switch (region)
+        //{
+        //    case Region.Top:
+        //        return Random.Range(1.5f, 4f);
+        //    case Region.Middle:
+        //        return Random.Range(-0.5f, 1.5f);
+        //    case Region.Bottom:
+        //    default:
+        //        return Random.Range(-3.5f, -0.5f);
+        //}
     }
 }
 
